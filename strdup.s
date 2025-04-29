@@ -1,5 +1,5 @@
-eextrn malloc
-seection .text
+extern malloc
+section .text
 	global _strdup
 
 	# rdi -> string to duplicate

@@ -1,4 +1,4 @@
-extern __ernno_location
+extern errno_location
 section .text
 	global _read
 
