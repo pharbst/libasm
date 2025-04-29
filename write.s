@@ -6,6 +6,7 @@ section .text
 	# rsi -> char *buff
 	# rdx -> size
 write:
+	xor rax, rax
 	mov ebx, rdi			; mov fd into ebx
 	mov ecx, rsi			; mov char *buff into ecx
 	mov edx, rdx			; mov size into edx
