@@ -1,8 +1,8 @@
 section .text
 	global _strcmp
 
-	# rdi -> string 1
-	# rsi -> string 2
+	; rdi -> string 1
+	; rsi -> string 2
 
 _strcmp:
 	xor rax, rax				; setting rax to 0

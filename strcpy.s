@@ -1,8 +1,8 @@
 section .text
 	global _strcpy
 
-	# rdi -> dest pointer must have enough writable memory which must not overlap with the src pointer memory
-	# rsi -> src pointer to valid c string
+; rdi -> dest pointer must have enough writable memory which must not overlap with the src pointer memory
+; rsi -> src pointer to valid c string
 
 _strcpy:
 	xor rax, rax		; setting rax to 0

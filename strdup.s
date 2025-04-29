@@ -1,8 +1,10 @@
 extern malloc
+extern _strlen
+extern _strcpy
 section .text
 	global _strdup
 
-	# rdi -> string to duplicate
+	; rdi -> string to duplicate
 
 _strdup:
 	push rdi		; save rdi original pointer to the stack
