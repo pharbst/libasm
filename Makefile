@@ -6,7 +6,7 @@
 #    By: pharbst <pharbst@student.42.heilbronn.de>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/28 18:12:18 by pharbst           #+#    #+#              #
-#    Updated: 2025/04/29 14:12:16 by pharbst          ###   ########.fr        #
+#    Updated: 2025/05/02 16:44:29 by pharbst          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,14 +25,14 @@ CFLAGS	:=	-f elf64
 LIBFT	:=	
 HEADER	:=	./libasm.h
 
-SRCS	:=	strlen.s\
-			strcpy.s\
-			strcmp.s\
-			write.s\
-			read.s\
-			strdup.s
+SRCS	:=	ft_strlen.s\
+			ft_strcpy.s\
+			ft_strcmp.s\
+			ft_write.s\
+			ft_read.s\
+			ft_strdup.s
 
-ODIR	:=	obj
+ODIR	:=	./obj
 OBJS	:=	$(SRCS:%.s=$(ODIR)/%.o)
 
 # **************************************************************************** #
@@ -40,22 +40,22 @@ OBJS	:=	$(SRCS:%.s=$(ODIR)/%.o)
 # **************************************************************************** #
 
 all:
-	@$(MAKE) -s proname_header
-	@$(MAKE) -s std_all
+	@$(MAKE) proname_header
+	@$(MAKE) std_all
 	
 std_all:
-	@printf "%-88s$(RESET)" "Assemble library ..."
-	@$(MAKE) -s $(NAME)
-	@printf "$(FGreen)$(TICKBOX)\n$(RESET)"
+	printf "%-88s$(RESET)" "Assemble library ..."
+	$(MAKE) $(NAME)
+	printf "$(FGreen)$(TICKBOX)\n$(RESET)"
 
 $(NAME): $(OBJS)
-	@ar rcs $(NAME) $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
 $(ODIR)/%.o: %.s | $(ODIR)
 	$(CC) $(CFLAGS) $< -o $@
 
 $(ODIR):
-	@mkdir -p $@
+	mkdir -p $@
 
 # **************************************************************************** #
 # Cleaning Rules
@@ -70,9 +70,9 @@ fclean:
 	@$(MAKE) -s cleanator
 
 re:
-	@$(MAKE) -s proname_header
-	@$(MAKE) -s cleanator
-	@$(MAKE) -s std_all
+	@$(MAKE) proname_header
+	@$(MAKE) cleanator
+	@$(MAKE) std_all
 
 std_clean:
 	@printf "%-95s$(RESET)" "$(FPurple)Cleaning up ..."

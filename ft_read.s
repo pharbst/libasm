@@ -1,11 +1,11 @@
 extern errno_location
-section .text
-	global _read
 
 	; rdi -> fd
 	; rsi -> char *buff
 	; rdx -> buffer size
-_read:
+section.text
+	global _ft_read
+_ft_read:
 	xor rax, rax
 	mov ebx, edi
 	mov ecx, esi

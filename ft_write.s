@@ -1,15 +1,15 @@
 extern errno_location
-section .text
-	global _write
 
 	; rdi -> fd
 	; rsi -> char *buff
 	; rdx -> size
-write:
+
+section .text
+	global _ft_write		; global symbol
+_ft_write:
 	xor rax, rax
 	mov ebx, edi			; mov fd into ebx
 	mov ecx, esi			; mov char *buff into ecx
-	; mov edx, edx			; mov size into edx
 	mov eax, 4				; set syscall number 4 for write
 	int 0x80				; interrupt and call kernel
 	test rax, rax			; check system call return >= 0

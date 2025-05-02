@@ -1,10 +1,10 @@
-section .text
-	global _strcpy
 
 ; rdi -> dest pointer must have enough writable memory which must not overlap with the src pointer memory
 ; rsi -> src pointer to valid c string
 
-_strcpy:
+section.text
+	global _ft_strcpy	; global symbol
+_ft_strcpy:
 	xor rax, rax		; setting rax to 0
 	mov rax, rdi		; writing the pointer into return register to increment rdi without loosing the original pointer
 	.loop:
