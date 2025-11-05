@@ -1,2 +1,3 @@
-obj
-libasm.a
+tests/libasm_tester
+tests/obj/
+obj/
