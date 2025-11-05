@@ -44,9 +44,9 @@ all:
 	@$(MAKE) std_all
 	
 std_all:
-	printf "%-88s$(RESET)" "Assemble library ..."
-	$(MAKE) $(NAME)
-	printf "$(FGreen)$(TICKBOX)\n$(RESET)"
+	@printf "%-88s$(RESET)" "Assemble library ..."
+	@$(MAKE) $(NAME)
+	@printf "$(FGreen)$(TICKBOX)\n$(RESET)"
 
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
@@ -75,12 +75,12 @@ re:
 	@$(MAKE) std_all
 
 std_clean:
-	@printf "%-95s$(RESET)" "$(FPurple)Cleaning up ..."
+	@printf "$(FPurple)%-95s$(RESET)" "Cleaning up ..."
 	@$(RM) -rf $(ODIR)
 	@printf "$(FGreen)$(TICKBOX)\n$(RESET)"
 
 cleanator:
-	@printf "%-95s$(RESET)" "$(FPurple)FCleaning up ..."
+	@printf "$(FPurple)%-95s$(RESET)" "FCleaning up ..."
 	@$(RM) -rf $(ODIR)
 	@$(RM) -rf $(NAME)
 	@printf "$(FGreen)$(TICKBOX)\n$(RESET)"

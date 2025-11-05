@@ -12,7 +12,8 @@
 
 #include "libasm.h"
 
-int main() {
-	_ft_write(1, "Hallo World!", 12);
-	return (0);
+int main(void)
+{
+    ft_write(1, "Hallo World!", 12);
+    return (0);
 }

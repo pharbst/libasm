@@ -1,20 +1,22 @@
-extern malloc
-extern _ft_strlen
-extern _ft_strcpy
+section .text
+    global ft_strdup
+    extern ft_strlen
+    extern ft_strcpy
+    extern malloc
 
-	; rdi -> string to duplicate
+ft_strdup:
+    mov     rdx, rdi
+    call    ft_strlen
+    inc     rax
+    mov     rdi, rax
+    call    malloc
+    test    rax, rax
+    je      .malloc_fail
+    mov     rsi, rdx
+    mov     rdi, rax
+    call    ft_strcpy
+    ret
+.malloc_fail:
+    ret
 
-section.text
-	global _ft_strdup		; global symbol
-_ft_strdup:
-	push rdi		; save rdi original pointer to the stack
-	call _ft_strlen	; call strlen
-	inc rax			; incremnt for 0 byte
-	mov rdi, rax	; put return of strlen into rdi
-	call malloc		; call malloc
-	mov rdi, rax	; store malloc result in rdi for strcpy
-	pop rsi			; get the original pointer of the string to duplicate in rsi
-	push rax		; save the original pointer from malloc onto the stack
-	call _ft_strcpy	; call strcpy with rdi deestination pointer and rsi src pointer
-	pop rax			; get back the original pointer from malloc
-	ret				; return the pointer to the duplicated string
+section .note.GNU-stack noalloc

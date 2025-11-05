@@ -1,13 +1,15 @@
+section .text
+    global ft_strlen
 
-section.text
-    global _ft_strlen       ; global symbol
-_ft_strlen:
-    xor rax, rax            ; set rax to null
-    .loop:
-        cmp byte [rdi], 0   ; compare *rdi with 0
-        je .return          ; jump equal to return
-        inc rdi             ; increment rdi pointer
-        inc rax             ; increment counter
-        jmp .loop           ; jump back to .loop
-    .return:
-        ret                 ; return rax
+ft_strlen:
+    xor     rax, rax
+.loop:
+    cmp     byte [rdi], 0
+    je      .return
+    inc     rdi
+    inc     rax
+    jmp     .loop
+.return:
+    ret
+
+section .note.GNU-stack noalloc
