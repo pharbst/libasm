@@ -12,28 +12,51 @@
 
 include color.mk
 
+SHELL           :=      /bin/bash
+
 # **************************************************************************** #
 # Variables
 # **************************************************************************** #
 
-NAME	:=	libasm.a
-BNAME	:=	libasm.a
+NAME            :=      libasm.a
+BNAME           :=      libasm.a
 
-CC		:=	nasm
-CFLAGS	:=	-f elf64
+NASM            :=      nasm
+NASMFLAGS       :=      -f elf64
 
-LIBFT	:=	
-HEADER	:=	./libasm.h
+CC              :=      cc
+CFLAGS          :=      -Wall -Wextra -Werror
+CPPFLAGS        :=      -I. -I./tests
+LDFLAGS         :=      -no-pie
 
-SRCS	:=	ft_strlen.s\
-			ft_strcpy.s\
-			ft_strcmp.s\
-			ft_write.s\
-			ft_read.s\
-			ft_strdup.s
+LIBFT           :=
+HEADER          :=      ./libasm.h
 
-ODIR	:=	./obj
-OBJS	:=	$(SRCS:%.s=$(ODIR)/%.o)
+SRCS            :=      ft_strlen.s\
+	                ft_strcpy.s\
+	                ft_strcmp.s\
+	                ft_write.s\
+	                ft_read.s\
+	                ft_strdup.s
+
+ODIR            :=      ./obj
+OBJS            :=      $(SRCS:%.s=$(ODIR)/%.o)
+
+TEST_DIR        :=      ./tests
+TEST_OBJDIR     :=      $(TEST_DIR)/obj
+TEST_SRCS       :=      $(TEST_DIR)/test_framework.c\
+	                $(TEST_DIR)/test_strlen.c\
+	                $(TEST_DIR)/test_strcpy.c\
+	                $(TEST_DIR)/test_strcmp.c\
+	                $(TEST_DIR)/test_strdup.c\
+	                $(TEST_DIR)/test_write.c\
+	                $(TEST_DIR)/test_read.c\
+	                $(TEST_DIR)/errno_shim.c\
+	                $(TEST_DIR)/test_runner.c
+TEST_OBJS       :=      $(TEST_SRCS:$(TEST_DIR)/%.c=$(TEST_OBJDIR)/%.o)
+TEST_BIN        :=      $(TEST_DIR)/libasm_tester
+
+.PHONY: all std_all clean fclean re std_clean cleanator proname_header test
 
 # **************************************************************************** #
 # Compilation Rules
@@ -42,17 +65,29 @@ OBJS	:=	$(SRCS:%.s=$(ODIR)/%.o)
 all:
 	@$(MAKE) proname_header
 	@$(MAKE) std_all
-	
+
 std_all:
-	printf "%-88s$(RESET)" "Assemble library ..."
-	$(MAKE) $(NAME)
-	printf "$(FGreen)$(TICKBOX)\n$(RESET)"
+	@printf "%-88s$(RESET)" "Assemble library ..."
+	@$(MAKE) $(NAME)
+	@printf "$(FGreen)$(TICKBOX)\n$(RESET)"
 
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
 $(ODIR)/%.o: %.s | $(ODIR)
-	$(CC) $(CFLAGS) $< -o $@
+	$(NASM) $(NASMFLAGS) $< -o $@
+
+$(TEST_OBJDIR)/%.o: $(TEST_DIR)/%.c | $(TEST_OBJDIR)
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
+
+$(TEST_OBJDIR):
+	mkdir -p $@
+
+$(TEST_BIN): $(TEST_OBJS) $(NAME)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(TEST_OBJS) $(NAME) -o $@
+
+test: re $(TEST_BIN)
+	./$(TEST_BIN)
 
 $(ODIR):
 	mkdir -p $@
@@ -77,12 +112,16 @@ re:
 std_clean:
 	@printf "%-95s$(RESET)" "$(FPurple)Cleaning up ..."
 	@$(RM) -rf $(ODIR)
+	@$(RM) -rf $(TEST_OBJDIR)
+	@$(RM) -f $(TEST_BIN)
 	@printf "$(FGreen)$(TICKBOX)\n$(RESET)"
 
 cleanator:
 	@printf "%-95s$(RESET)" "$(FPurple)FCleaning up ..."
 	@$(RM) -rf $(ODIR)
 	@$(RM) -rf $(NAME)
+	@$(RM) -rf $(TEST_OBJDIR)
+	@$(RM) -f $(TEST_BIN)
 	@printf "$(FGreen)$(TICKBOX)\n$(RESET)"
 
 # **************************************************************************** #
@@ -101,5 +140,3 @@ $(Red)║$(Green)     #+#            #+#     #+#    #+#         #+#     #+# #+# 
 $(Red)║$(Green)    ########## ########### #########          ###     ###  ########  ###       ###       $(Red)║\n\
 $(Red)║$(Green)                                                                                         $(Red)║\n\
 $(Red)╚═════════════════════════════════════════════════════════════════════════════════════════╝\n$(RESET)"
-
-
