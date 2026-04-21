@@ -6,7 +6,7 @@
 #    By: pharbst <pharbst@student.42heilbronn.de>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/28 18:12:18 by pharbst           #+#    #+#              #
-#    Updated: 2026/04/21 21:56:40 by pharbst          ###   ########.fr        #
+#    Updated: 2026/04/21 21:59:12 by pharbst          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,28 +48,28 @@ help:
 	  test\n"
 
 all:
-	@$(MAKE) proname_header
-	@$(MAKE) std_all
+	@$(MAKE) -s proname_header
+	@$(MAKE) -s std_all
 
 test:
-	@$(MAKE) proname_header
-	@$(MAKE) std_all
-	gcc -Wall -Werror -Wextra main.c libasm.a -o libasm_test
-	./libasm_test
+	@$(MAKE) -s proname_header
+	@$(MAKE) -s std_all
+	@gcc -Wall -Werror -Wextra main.c libasm.a -o libasm_test
+	@./libasm_test
 
 std_all:
-	printf "%-88s$(RESET)" "Assemble library ..."
-	$(MAKE) $(NAME)
-	printf "$(FGreen)$(TICKBOX)\n$(RESET)"
+	@printf "%-88s$(RESET)" "Assemble library ..."
+	$(MAKE) -s $(NAME)
+	@printf "$(FGreen)$(TICKBOX)\n$(RESET)"
 
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+	@ar rcs $(NAME) $(OBJS)
 
 $(ODIR)/%.o: %.s | $(ODIR)
-	$(CC) $(CFLAGS) $< -o $@
+	@$(CC) $(CFLAGS) $< -o $@
 
 $(ODIR):
-	mkdir -p $@
+	@mkdir -p $@
 
 # **************************************************************************** #
 # Cleaning Rules
