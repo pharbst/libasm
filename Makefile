@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pharbst <pharbst@student.42.heilbronn.de>  +#+  +:+       +#+         #
+#    By: pharbst <pharbst@student.42heilbronn.de>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/28 18:12:18 by pharbst           #+#    #+#              #
-#    Updated: 2025/05/02 16:44:29 by pharbst          ###   ########.fr        #
+#    Updated: 2026/04/21 21:56:40 by pharbst          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,10 +39,24 @@ OBJS	:=	$(SRCS:%.s=$(ODIR)/%.o)
 # Compilation Rules
 # **************************************************************************** #
 
+help:
+	@printf "Available Rules:\n\
+	  all\n\
+	  clean\n\
+	  fclean\n\
+	  re\n\
+	  test\n"
+
 all:
 	@$(MAKE) proname_header
 	@$(MAKE) std_all
-	
+
+test:
+	@$(MAKE) proname_header
+	@$(MAKE) std_all
+	gcc -Wall -Werror -Wextra main.c libasm.a -o libasm_test
+	./libasm_test
+
 std_all:
 	printf "%-88s$(RESET)" "Assemble library ..."
 	$(MAKE) $(NAME)
