@@ -1,6 +1,6 @@
 section .text
     global _ft_strlen       ; global symbol
-_ft_strlen:
+ft_strlen:
     xor rax, rax            ; set rax to null
     .loop:
         cmp byte [rdi], 0   ; compare *rdi with 0

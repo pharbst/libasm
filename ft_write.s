@@ -6,7 +6,7 @@ extern __errno_location
 
 section .text
 	global _ft_write		; global symbol
-_ft_write:
+ft_write:
 	mov rax, 1
 	syscall
 	js .error

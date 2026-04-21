@@ -4,7 +4,7 @@
 
 section .text
 	global _ft_strcmp		; global symbol
-_ft_strcmp:
+ft_strcmp:
 	xor rax, rax				; setting rax to 0
 	.loop:
 		movzx eax, byte [rdi]	; load unsigned char into 32bit eax register and fill rest with 0

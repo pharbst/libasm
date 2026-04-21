@@ -6,7 +6,7 @@ extern _ft_strcpy
 
 section .text
 	global _ft_strdup		; global symbol
-_ft_strdup:
+ft_strdup:
 	push rdi		; save rdi original pointer to the stack
 	call _ft_strlen	; call strlen
 	inc rax			; incremnt for 0 byte
