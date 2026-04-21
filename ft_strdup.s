@@ -18,3 +18,5 @@ ft_strdup:
 	call ft_strcpy wrt ..plt	; call strcpy with rdi deestination pointer and rsi src pointer
 	pop rax						; get back the original pointer from malloc
 	ret							; return the pointer to the duplicated string
+
+section .note.GNU-stack noalloc noexec nowrite progbits

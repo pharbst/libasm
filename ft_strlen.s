@@ -10,3 +10,5 @@ ft_strlen:
         jmp .loop           ; jump back to .loop
     .return:
         ret                 ; return rax
+
+section .note.GNU-stack noalloc noexec nowrite progbits

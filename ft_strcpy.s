@@ -17,3 +17,5 @@ ft_strcpy:
 		jmp .loop		; jump back to beeginnning of the loop
 	.return:
 		ret				; return the pointer in rax
+
+section .note.GNU-stack noalloc noexec nowrite progbits

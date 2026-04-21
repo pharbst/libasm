@@ -20,3 +20,5 @@ ft_strcmp:
 		sub eax, ecx			; subtract (unsigned char s1 - unsigned char s2) and store result in eax
 	.return:
 		ret						; return rax as result
+
+section .note.GNU-stack noalloc noexec nowrite progbits
