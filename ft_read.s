@@ -1,4 +1,4 @@
-extern errno_location
+extern __errno_location
 
 	; rdi -> fd
 	; rsi -> char *buff
@@ -7,15 +7,15 @@ extern errno_location
 section .text
 	global _ft_read
 _ft_read:
-	mov rax, SYS_READ
+	mov rax, 0
 	syscall
 	js .error
 	ret
 
 	.error
 		neg rax
-		mov edx, rax
-		call errno_location
+		mov edx, eax
+		call __errno_location wrt ..plt
 		mov [rax], edx
 		mov rax, -1
 		ret
