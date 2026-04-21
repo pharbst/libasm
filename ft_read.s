@@ -5,15 +5,16 @@ extern __errno_location
 	; rdx -> buffer size
 
 section .text
-	global _ft_read
+	global ft_read
 ft_read:
 	mov rax, 0
 	syscall
+	test rax, rax
 	js .error
 	ret
 
 	.error
-		neg rax
+		neg eax
 		mov edx, eax
 		call __errno_location wrt ..plt
 		mov [rax], edx

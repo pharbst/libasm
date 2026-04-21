@@ -1,5 +1,5 @@
 section .text
-    global _ft_strlen       ; global symbol
+    global ft_strlen       ; global symbol
 ft_strlen:
     xor rax, rax            ; set rax to null
     .loop:

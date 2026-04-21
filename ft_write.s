@@ -5,15 +5,16 @@ extern __errno_location
 	; rdx -> size
 
 section .text
-	global _ft_write		; global symbol
+	global ft_write		; global symbol
 ft_write:
 	mov rax, 1
 	syscall
+	test rax, rax
 	js .error
 	ret
 
 	.error
-		neg rax
+		neg eax
 		mov edx, eax
 		call __errno_location wrt ..plt
 		mov [rax], edx

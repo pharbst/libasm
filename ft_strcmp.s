@@ -3,7 +3,7 @@
 	; rsi -> string 2
 
 section .text
-	global _ft_strcmp		; global symbol
+	global ft_strcmp		; global symbol
 ft_strcmp:
 	xor rax, rax				; setting rax to 0
 	.loop:

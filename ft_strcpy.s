@@ -3,14 +3,14 @@
 ; rsi -> src pointer to valid c string
 
 section .text
-	global _ft_strcpy	; global symbol
+	global ft_strcpy	; global symbol
 ft_strcpy:
 	xor rax, rax		; setting rax to 0
 	mov rax, rdi		; writing the pointer into return register to increment rdi without loosing the original pointer
 	.loop:
-		mov al, [rsi]	; load byte pointed by rsi into acc low register
-		mov [rdi], al	; write that byte into memory pointed by rdi
-		cmp al, 0		; compare acc low register with 0
+		mov dl, [rsi]	; load byte pointed by rsi into acc low register
+		mov [rdi], dl	; write that byte into memory pointed by rdi
+		cmp dl, 0		; compare acc low register with 0
 		je .return		; jump if equal
 		inc rsi			; increment rsi
 		inc rdi			; increment rdi
