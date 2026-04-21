@@ -2,7 +2,7 @@
 	; rdi -> string 1
 	; rsi -> string 2
 
-section.text
+section .text
 	global _ft_strcmp		; global symbol
 _ft_strcmp:
 	xor rax, rax				; setting rax to 0

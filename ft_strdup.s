@@ -4,7 +4,7 @@ extern _ft_strcpy
 
 	; rdi -> string to duplicate
 
-section.text
+section .text
 	global _ft_strdup		; global symbol
 _ft_strdup:
 	push rdi		; save rdi original pointer to the stack

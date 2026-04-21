@@ -2,7 +2,7 @@
 ; rdi -> dest pointer must have enough writable memory which must not overlap with the src pointer memory
 ; rsi -> src pointer to valid c string
 
-section.text
+section .text
 	global _ft_strcpy	; global symbol
 _ft_strcpy:
 	xor rax, rax		; setting rax to 0
