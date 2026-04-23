@@ -6,7 +6,7 @@
 /*   By: pharbst <pharbst@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:16:40 by pharbst           #+#    #+#             */
-/*   Updated: 2026/04/21 21:09:21 by pharbst          ###   ########.fr       */
+/*   Updated: 2026/04/23 23:24:32 by pharbst          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,8 @@ char*	ft_strcpy(char* __restrict dest, const char *__restrict src);
 size_t	ft_write(int fd, const void* buff, size_t count);
 size_t	ft_read(int fd, void* buff, size_t count);
 char*	ft_strdup(char* str);
+char*	ft_strchr(char* __restrict str, char c);
+int		ft_is_whitespace(char c);
+int		ft_atoi_base(char *num_str, char *base);
 
 #endif

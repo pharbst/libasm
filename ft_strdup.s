@@ -15,7 +15,7 @@ ft_strdup:
 	mov rdi, rax				; store malloc result in rdi for strcpy
 	pop rsi						; get the original pointer of the string to duplicate in rsi
 	push rax					; save the original pointer from malloc onto the stack
-	call ft_strcpy wrt ..plt	; call strcpy with rdi deestination pointer and rsi src pointer
+	call ft_strcpy wrt ..plt	; call strcpy with rdi destination pointer and rsi src pointer
 	pop rax						; get back the original pointer from malloc
 	ret							; return the pointer to the duplicated string
 

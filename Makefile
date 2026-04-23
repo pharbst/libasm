@@ -6,7 +6,7 @@
 #    By: pharbst <pharbst@student.42heilbronn.de>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/28 18:12:18 by pharbst           #+#    #+#              #
-#    Updated: 2026/04/21 21:59:12 by pharbst          ###   ########.fr        #
+#    Updated: 2026/04/23 23:17:05 by pharbst          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,10 @@ SRCS	:=	ft_strlen.s\
 			ft_strcmp.s\
 			ft_write.s\
 			ft_read.s\
-			ft_strdup.s
+			ft_strdup.s\
+			ft_strchr.s\
+			ft_is_whitespace.s\
+			ft_atoi_base.s
 
 ODIR	:=	./obj
 OBJS	:=	$(SRCS:%.s=$(ODIR)/%.o)
@@ -39,13 +42,13 @@ OBJS	:=	$(SRCS:%.s=$(ODIR)/%.o)
 # Compilation Rules
 # **************************************************************************** #
 
-help:
-	@printf "Available Rules:\n\
-	  all\n\
-	  clean\n\
-	  fclean\n\
-	  re\n\
-	  test\n"
+# help:
+# 	@printf "Available Rules:\n\
+# 	  all\n\
+# 	  clean\n\
+# 	  fclean\n\
+# 	  re\n\
+# 	  test\n"
 
 all:
 	@$(MAKE) -s proname_header

@@ -6,7 +6,7 @@
 /*   By: pharbst <pharbst@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:18:25 by pharbst           #+#    #+#             */
-/*   Updated: 2026/04/21 22:01:00 by pharbst          ###   ########.fr       */
+/*   Updated: 2026/04/23 23:13:40 by pharbst          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,13 @@ static void	test_read(void)
 	ret = ft_read(-1, buf, 1);
 	check_int("ft_read invalid fd return", ret, -1);
 	check_int("ft_read invalid fd errno", errno, EBADF);
+}
+
+static void	test_atoi_base(void)
+{
+	check_int("ft_atoi_base(\"42\")", ft_atoi_base("42", "0123456789"), 42);
+	check_int("ft_atoi_base(\"+42\")", ft_atoi_base("+42", "0123456789"), 42);
+	check_int("ft_atoi_base(\"-42\")", ft_atoi_base("-42", "0123456789"), -42);
 }
 
 int	main(void)
