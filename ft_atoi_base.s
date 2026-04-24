@@ -10,11 +10,11 @@ section .text
 ft_atoi_base:
     xor rcx, rcx                                ; position = 0
     mov rdx, rdi                                ; make the register rdi free for the is whitespace function
+    xor rdi, rdi
     mov r8, 1                                   ; if no sign set pos sign but dont increment counter
 
 
     .skip_ws:                                   ; short loop to skip whitespace
-        xor rdi, rdi
         mov dil, [rdx + rcx]                    ; move the first char into rdi (destination index low)
         call ft_is_whitespace wrt ..plt         ; call is whitespace and wrt ..plt (with respect to ..procedure linkage table)
         test rax, rax                           ; set cpu flags for return value
