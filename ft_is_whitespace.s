@@ -3,6 +3,7 @@ section .text
 
     ; dil (rdi destination index low) char to check if whitespace ("\r\t\v\f\n" and ' ')
 
+ft_is_whitespace:
     cmp dil, ' '
     je .is_ws
     cmp dil, 9

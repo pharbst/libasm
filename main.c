@@ -6,7 +6,7 @@
 /*   By: pharbst <pharbst@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:18:25 by pharbst           #+#    #+#             */
-/*   Updated: 2026/04/23 23:13:40 by pharbst          ###   ########.fr       */
+/*   Updated: 2026/04/24 00:20:11 by pharbst          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,6 +201,7 @@ int	main(void)
 	test_strcmp();
 	test_write();
 	test_read();
+	test_atoi_base();
 	if (g_failures != 0)
 	{
 		printf("\n%d test(s) failed\n", g_failures);

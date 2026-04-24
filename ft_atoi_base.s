@@ -7,11 +7,13 @@ section .text
     ; rdi source string
     ; rsi base string
 
+ft_atoi_base:
     xor rcx, rcx                                ; position = 0
     mov rdx, rdi                                ; make the register rdi free for the is whitespace function
 
 
     .skip_ws:                                   ; short loop to skip whitespace
+        xor rdi, rdi
         mov dil, [rdx + rcx]                    ; move the first char into rdi (destination index low)
         call ft_is_whitespace wrt ..plt         ; call is whitespace and wrt ..plt (with respect to ..procedure linkage table)
         test rax, rax                           ; set cpu flags for return value
@@ -48,11 +50,14 @@ section .text
     xor r10, r10                                ; value = 0
 
     .loop:
+        xor rsi, rsi
         mov sil, [rdx + rcx]
         test sil, sil
         jz .end
-
-        call ft_strchr wrt ..plt                ; call strchr with base string and current char
+                ; safe rdi cause strchr mutates rdi
+        mov r11, rdi
+        call ft_strchr wrt ..plt                ; call strchr with base string rdi and current char sil
+        mov rdi, r11
         test rax, rax
         jz .end
         sub rax, rdi                            ; calculate actual index
@@ -61,6 +66,7 @@ section .text
         add r10, rax
 
         inc rcx
+        jmp .loop
 
     .end:
         imul r10, r8

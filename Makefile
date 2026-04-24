@@ -6,7 +6,7 @@
 #    By: pharbst <pharbst@student.42heilbronn.de>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/28 18:12:18 by pharbst           #+#    #+#              #
-#    Updated: 2026/04/23 23:17:05 by pharbst          ###   ########.fr        #
+#    Updated: 2026/04/23 23:36:27 by pharbst          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ NAME	:=	libasm.a
 BNAME	:=	libasm.a
 
 CC		:=	nasm
-CFLAGS	:=	-f elf64
+CFLAGS	:=	-g -f elf64
 
 LIBFT	:=	
 HEADER	:=	./libasm.h
@@ -87,9 +87,9 @@ fclean:
 	@$(MAKE) -s cleanator
 
 re:
-	@$(MAKE) proname_header
-	@$(MAKE) cleanator
-	@$(MAKE) std_all
+	@$(MAKE) -s proname_header
+	@$(MAKE) -s cleanator
+	@$(MAKE) -s std_all
 
 std_clean:
 	@printf "%-95s$(RESET)" "$(FPurple)Cleaning up ..."
