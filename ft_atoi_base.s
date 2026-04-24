@@ -10,6 +10,7 @@ section .text
 ft_atoi_base:
     xor rcx, rcx                                ; position = 0
     mov rdx, rdi                                ; make the register rdi free for the is whitespace function
+    mov r8, 1                                   ; if no sign set pos sign but dont increment counter
 
 
     .skip_ws:                                   ; short loop to skip whitespace
@@ -23,23 +24,19 @@ ft_atoi_base:
 
 
     .check_sign:
+        mov dil, [rdx + rcx]
         cmp dil, '-'                            ; if char is '-' set neg sign and increment counter
         je .set_neg
         cmp dil, '+'                            ; if char is '+' set pos sign and increment counter
         je .set_pos
-        mov r8, 1                               ; if no sign set pos sign but dont increment counter
         jmp .base_len
 
 
-    .set_pos:
-        mov r8, 1
-        inc rcx
-        jmp .base_len
-
-    .set_neg:
-        mov r8, -1
-        inc rcx
-        jmp .base_len
+        .set_neg:
+            imul r8, -1
+        .set_pos:
+            inc rcx
+            jmp .check_sign
 
 
     .base_len:
