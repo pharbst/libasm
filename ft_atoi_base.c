@@ -26,10 +26,3 @@ int ft_atoi_base(const char *num_str, const char *base) {
         value *= -1;
     return (value);
 }
-
-
-
-    .end:
-        mul r10, r8
-        mov rax, r10
-        ret
