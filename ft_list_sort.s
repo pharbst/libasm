@@ -38,10 +38,10 @@ ft_list_sort:
 			test r14, r14
 			jz .iterate_list_a.tail
 
-			mov rdi, [r13]
-			mov rsi, [r14]
+			mov rdi, [r13]			; r13->data
+			mov rsi, [r14]			; r14->data
 			call rbx
-			cmp rax, 0
+			cmp eax, 0
 			jle .iterate_list_b.tail
 			mov rax, [r13]
 			mov rcx, [r14]
@@ -49,11 +49,11 @@ ft_list_sort:
 			mov [r14], rax
 
 			.iterate_list_b.tail
-				add r14, 8
+				mov r14, [r14 + 8]
 				jmp .iterate_list_b
 
 		.iterate_list_a.tail
-			add r13, 8
+			mov r13, [r13 + 8]
 			jmp .iterate_list_a
 
 	.end.pop:
