@@ -7,6 +7,8 @@ section .text
     ; return first occurance of char in string
 
 ft_strchr:
+    test rdi, rdi
+    jz .not_found
     .loop:
         xor rax, rax
         mov al, [rdi]

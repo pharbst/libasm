@@ -6,7 +6,7 @@
 /*   By: pharbst <pharbst@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:18:25 by pharbst           #+#    #+#             */
-/*   Updated: 2026/04/24 00:39:47 by pharbst          ###   ########.fr       */
+/*   Updated: 2026/04/26 18:59:32 by pharbst          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,6 +195,10 @@ static void	test_atoi_base(void)
 	check_int("ft_atoi_base(\"-42\")", ft_atoi_base("-42", "0123456789"), -42);
 	check_int("ft_atoi_base(\"---42\")", ft_atoi_base("---42", "0123456789"), -42);
 	check_int("ft_atoi_base(\"---0X2A\")", ft_atoi_base("---2A", "0123456789ABCDEF"), -42);
+	printf("%d\n", ft_atoi_base("1", (char*)"001"));
+	printf("%d\n", ft_atoi_base("1", (char*)"01+"));
+	printf("%d\n", ft_atoi_base("1", (char*)"01-"));
+	printf("%d\n", ft_atoi_base("1", (char*)"01\t"));
 }
 
 int	main(void)

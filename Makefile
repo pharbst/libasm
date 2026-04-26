@@ -30,13 +30,18 @@ SRCS	:=	ft_strlen.s\
 			ft_strcmp.s\
 			ft_write.s\
 			ft_read.s\
-			ft_strdup.s\
-			ft_strchr.s\
-			ft_is_whitespace.s\
-			ft_atoi_base.s
+			ft_strdup.s
+
+BONUS_SRCS	:=	ft_strchr.s\
+				ft_is_whitespace.s\
+				ft_atoi_base.s\
+				ft_list_push_front.s\
+				ft_list_size.s\
+				ft_list_sort.s
 
 ODIR	:=	./obj
 OBJS	:=	$(SRCS:%.s=$(ODIR)/%.o)
+BOBJS	:=	$(BONUS_SRCS:%.s=$(ODIR)/%.o)
 
 # **************************************************************************** #
 # Compilation Rules
@@ -54,6 +59,10 @@ all:
 	@$(MAKE) -s proname_header
 	@$(MAKE) -s std_all
 
+bonus:
+	@$(MAKE) -s proname_header
+	@$(MAKE) -s std_bonus
+
 test:
 	@$(MAKE) -s proname_header
 	@$(MAKE) -s std_all
@@ -65,8 +74,16 @@ std_all:
 	$(MAKE) -s $(NAME)
 	@printf "$(FGreen)$(TICKBOX)\n$(RESET)"
 
+std_bonus:
+	@printf "%-88s$(RESET)" "Assemble bonus library ..."
+	$(MAKE) -s bonus_build
+	@printf "$(FGreen)$(TICKBOX)\n$(RESET)"
+
 $(NAME): $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
+
+bonus_build: $(OBJS) $(BOBJS)
+	@ar rcs $(BNAME) $(OBJS) $(BOBJS)
 
 $(ODIR)/%.o: %.s | $(ODIR)
 	@$(CC) $(CFLAGS) $< -o $@
@@ -118,5 +135,3 @@ $(Red)║$(Green)     #+#            #+#     #+#    #+#         #+#     #+# #+# 
 $(Red)║$(Green)    ########## ########### #########          ###     ###  ########  ###       ###       $(Red)║\n\
 $(Red)║$(Green)                                                                                         $(Red)║\n\
 $(Red)╚═════════════════════════════════════════════════════════════════════════════════════════╝\n$(RESET)"
-
-
