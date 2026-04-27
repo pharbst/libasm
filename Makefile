@@ -6,7 +6,7 @@
 #    By: pharbst <pharbst@student.42heilbronn.de>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/28 18:12:18 by pharbst           #+#    #+#              #
-#    Updated: 2026/04/23 23:36:27 by pharbst          ###   ########.fr        #
+#    Updated: 2026/04/27 01:48:44 by pharbst          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,8 @@ BONUS_SRCS	:=	ft_strchr.s\
 				ft_atoi_base.s\
 				ft_list_push_front.s\
 				ft_list_size.s\
-				ft_list_sort.s
+				ft_list_sort.s\
+				ft_list_remove_if.s
 
 ODIR	:=	./obj
 OBJS	:=	$(SRCS:%.s=$(ODIR)/%.o)

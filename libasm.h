@@ -6,7 +6,7 @@
 /*   By: pharbst <pharbst@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:16:40 by pharbst           #+#    #+#             */
-/*   Updated: 2026/04/26 23:23:36 by pharbst          ###   ########.fr       */
+/*   Updated: 2026/04/27 00:05:32 by pharbst          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ int		ft_atoi_base(char *num_str, char *base);
 void	ft_list_push_front(t_list **head, void *data);
 int		ft_list_size(t_list *head);
 void	ft_list_sort(t_list **head, int (*cmp)(void *, void *));
-void	ft_list_remove_if(t_list **head, void *data_ref, int (*cmp)(), void (*free_fct)(void *));
+void	ft_list_remove_if(t_list **head, void *data_ref, int (*cmp)(void *, void *), void (*free_fct)(void *));
 
 #endif

@@ -25,7 +25,7 @@ ft_list_sort:
 
 	mov r13, [r12]					; r13 holds r13 = *begin_list
 
-	.iterate_list_a
+	.iterate_list_a:
 		; while (r13 && r13->next)
 		test r13, r13				; if !r13
 		jz .end.pop
@@ -48,11 +48,11 @@ ft_list_sort:
 			mov [r13], rcx
 			mov [r14], rax
 
-			.iterate_list_b.tail
+			.iterate_list_b.tail:
 				mov r14, [r14 + 8]
 				jmp .iterate_list_b
 
-		.iterate_list_a.tail
+		.iterate_list_a.tail:
 			mov r13, [r13 + 8]
 			jmp .iterate_list_a
 
