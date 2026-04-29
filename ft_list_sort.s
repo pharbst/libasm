@@ -64,3 +64,5 @@ ft_list_sort:
 
 	.end:
 		ret
+
+section .note.GNU-stack noalloc noexec nowrite progbits

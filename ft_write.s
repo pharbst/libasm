@@ -9,7 +9,7 @@ section .text
 ft_write:
 	mov rax, 1
 	syscall
-	test rax, rax
+	test eax, eax
 	js .error
 	ret
 

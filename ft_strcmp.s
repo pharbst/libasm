@@ -3,22 +3,27 @@
 	; rsi -> string 2
 
 section .text
-	global ft_strcmp		; global symbol
+	global ft_strcmp			; global symbol
 ft_strcmp:
 	xor rax, rax				; setting rax to 0
+	xor rcx, rcx
+	xor rdx, rdx
 	.loop:
-		movzx eax, byte [rdi]	; load unsigned char into 32bit eax register and fill rest with 0
-		movzx ecx, byte [rsi]	; load unsigned char into 32bit ecx register and fill rest with 0
-		cmp eax, ecx			; compare the bytes
-		jne .sub				; jump if bytes are different
-		test al, al				; check if byte was 0 byte
-		je .return				; jump to return
-		inc rdi					; increment s1 pointer
-		inc rsi					; increment s2 pointer
-		jmp .loop				; jump back to beginning of .loop
-	.sub:
-		sub eax, ecx			; subtract (unsigned char s1 - unsigned char s2) and store result in eax
-	.return:
+		movzx eax, byte [rdi + rcx]
+		movzx edx, byte [rsi + rcx]
+		test eax, eax
+		jz .last
+		test edx, edx
+		jz .last
+		sub eax, edx
+		jnz .end
+		inc rcx
+		jmp .loop
+
+	.last:
+		sub eax, edx
+
+	.end:
 		ret						; return rax as result
 
 section .note.GNU-stack noalloc noexec nowrite progbits

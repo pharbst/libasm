@@ -9,7 +9,7 @@ section .text
 ft_read:
 	mov rax, 0
 	syscall
-	test rax, rax
+	test eax, eax
 	js .error
 	ret
 
